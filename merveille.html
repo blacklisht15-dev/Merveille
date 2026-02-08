@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Joyeux Anniversaire Merveille ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rose-doux: #ffb7c5;
+            --rose-fonce: #ff69b4;
+            --or-pale: #f4e4c1;
+            --violet-poetique: #e6e6fa;
+            --bleu-nuit: #2c3e50;
+            --blanc-casse: #faf9f6;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #e6e6fa 50%, #fff5ee 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--bleu-nuit);
+        }
+
+        /* Particules flottantes */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, var(--rose-doux) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Conteneur principal */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* En-tête avec effet néon doux */
+        .header {
+            text-align: center;
+            margin-top: 40px;
+            animation: fadeInDown 2s ease-out;
+        }
+
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            background: linear-gradient(45deg, var(--rose-fonce), #ff1493, #da70d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            color: #666;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        /* Carte principale */
+        .main-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            margin: 30px 0;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 
+                0 20px 60px rgba(255, 105, 180, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 2s ease-out 0.5s both;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 183, 197, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .birthday-icon {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .message {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            line-height: 1.8;
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            color: var(--rose-fonce);
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+
+        /* Section Poèmes */
+        .poems-section {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 6vw, 3rem);
+            text-align: center;
+            color: var(--rose-fonce);
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '✦';
+            display: block;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            opacity: 0.6;
+        }
+
+        .poem-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 240, 245, 0.95) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--rose-doux);
+            position: relative;
+            transform: translateX(-100px);
+            opacity: 0;
+            animation: slideIn 1s ease-out forwards;
+        }
+
+        .poem-card:nth-child(2) { animation-delay: 0.2s; }
+        .poem-card:nth-child(3) { animation-delay: 0.4s; }
+        .poem-card:nth-child(4) { animation-delay: 0.6s; }
+
+        @keyframes slideIn {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .poem-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--rose-doux);
+            opacity: 0.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .poem-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--rose-fonce);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .poem-text {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: 2;
+            color: #444;
+            font-style: italic;
+            white-space: pre-line;
+        }
+
+        .poem-author {
+            text-align: right;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Galerie photo stylisée */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 600px;
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        .photo-frame {
+            aspect-ratio: 1;
+            background: linear-gradient(45deg, var(--rose-doux), var(--violet-poetique));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        /* Bouton magique */
+        .magic-button {
+            background: linear-gradient(45deg, var(--rose-fonce), #ff1493);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4); }
+            50% { box-shadow: 0 15px 40px rgba(255, 105, 180, 0.6); }
+        }
+
+        .magic-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.6);
+        }
+
+        .magic-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confetti-fall 3s linear forwards;
+            z-index: 1000;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: auto;
+            padding: 40px 20px;
+            text-align: center;
+            font-style: italic;
+            color: #888;
+            font-size: 1.1rem;
+            animation: fadeIn 2s ease-out 1s both;
+        }
+
+        .heart {
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+            color: var(--rose-fonce);
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+        }
+
+        /* Animations d'entrée */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive optimisations */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .main-card {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+            
+            .poem-card {
+                padding: 25px 20px;
+            }
+            
+            .photo-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .magic-button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+                width: 90%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .photo-gallery {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Mode sombre support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+                color: #e0e0e0;
+            }
+            
+            .main-card, .poem-card {
+                background: rgba(30, 30, 50, 0.9);
+                color: #e0e0e0;
+            }
+            
+            .message, .poem-text {
+                color: #ccc;
+            }
+        }
+
+        /* Réduction de mouvement */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particules flottantes -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <!-- En-tête -->
+        <header class="header">
+            <h1 class="title">Joyeux Anniversaire</h1>
+            <p class="subtitle">Merveille ✨</p>
+        </header>
+
+        <!-- Carte principale -->
+        <div class="main-card">
+            <div class="card-content">
+                <div class="birthday-icon">🎂</div>
+                <p class="message">
+                    En ce jour si <span class="highlight">spécial</span>, que la magie de l'univers 
+                    conspire pour t'offrir tout l'amour, la joie et la beauté que tu mérites. 
+                    Tu es une âme <span class="highlight">merveilleuse</span>, et ce monde est 
+                    plus lumineux grâce à toi.
+                </p>
+            </div>
+        </div>
+
+        <!-- Galerie décorative -->
+        <div class="photo-gallery">
+            <div class="photo-frame">🌸</div>
+            <div class="photo-frame">⭐</div>
+            <div class="photo-frame">🦋</div>
+            <div class="photo-frame">🌙</div>
+        </div>
+
+        <!-- Section des poèmes -->
+        <section class="poems-section">
+            <h2 class="section-title">Poèmes Doux</h2>
+            
+            <article class="poem-card">
+                <h3 class="poem-title">Éclat de Toi</h3>
+                <p class="poem-text">Comme le soleil caresse l'aurore,
+Tu naquis un jour de grâce et d'amour.
+Chaque sourire tien est une aurore
+Qui chasse la nuit, qui donne le jour.
+
+Merveille, ton nom porte ta lumière,
+Une étoile parmi les étoiles,
+Dans le jardin délicat de la terre,
+Tu es la fleur qui jamais ne fanent.</p>
+                <p class="poem-author">— Pour toi</p>
+            </article>
+
+            <article class="poem-card">
+                <h3 class="poem-title">L'Anniversaire des Rêves</h3>
+                <p class="poem-text">Sur les ailes du temps, voici ton jour,
+Où les vœux dansent comme des papillons.
+Que ta vie soit un doux séjour
+Entre rires, amour et chansons.
+
+Que chaque année soit un poème,
+Écrit avec l'encre du bonheur,
+Et que dans ton cœur on y thème
+L'éternelle jeunesse et la douceur.</p>
+                <p class="poem-author">— Célébration</p>
+            </article>
+
+            <article class="poem-card">
+                <h3 class="poem-title">À Merveille</h3>
+                <p class="poem-text">Il existe des âmes qui font briller le monde,
+Des présences douces comme le vent du soir.
+Toi, tu es cette lumière qui inonde
+Les cœurs fatigués d'un baume d'espoir.
+
+Joyeux anniversaire, âme sœur,
+Que tes jours soient cousus d'or fin,
+Que la vie soit pour toi une douceur,
+Et chaque instant un jardin.</p>
+                <p class="poem-author">— Amitié</p>
+            </article>
+        </section>
+
+        <!-- Bouton magique -->
+        <button class="magic-button" onclick="createConfetti()">
+            ✨ Clique pour de la magie ✨
+        </button>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Avec toute mon affection <span class="heart">❤</span></p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Que cette année t'apporte mille merveilles</p>
+        </footer>
+    </div>
+
+    <script>
+        // Création des particules flottantes
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                
+                // Variations de taille et couleur
+                const size = 5 + Math.random() * 15;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                const colors = ['#ffb7c5', '#ff69b4', '#da70d6', '#f4e4c1', '#e6e6fa'];
+                particle.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]} 0%, transparent 70%)`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Effet confetti au clic
+        function createConfetti() {
+            const colors = ['#ff69b4', '#ffb7c5', '#da70d6', '#f4e4c1', '#ffd700', '#ff1493'];
+            const shapes = ['circle', 'square', 'heart'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Position aléatoire
+                confetti.style.left = Math.random() * 100 + 'vw';
+                
+                // Couleur aléatoire
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Forme
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                if (shape === 'circle') {
+                    confetti.style.borderRadius = '50%';
+                } else if (shape === 'heart') {
+                    confetti.style.clipPath = 'path("M12,21.35l-1.45-1.32C5.4,15.36,2,12.28,2,8.5 C2,5.42,4.42,3,7.5,3c1.74,0,3.41,0.81,4.5,2.09C13.09,3.81,14.76,3,16.5,3 C19.58,3,22,5.42,22,8.5c0,3.78-3.4,6.86-8.55,11.54L12,21.35z")';
+                    confetti.style.width = '20px';
+                    confetti.style.height = '20px';
+                }
+                
+                // Taille aléatoire
+                const size = 8 + Math.random() * 12;
+                confetti.style.width = size + 'px';
+                confetti.style.height = size + 'px';
+                
+                // Animation aléatoire
+                confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                
+                document.body.appendChild(confetti);
+                
+                // Nettoyage
+                setTimeout(() => confetti.remove(), 4000);
+            }
+            
+            // Son visuel (vibration si supporté)
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+
+        // Animation au scroll pour les poèmes
+        function handleScroll() {
+            const cards = document.querySelectorAll('.poem-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.top < window.innerHeight * 0.8;
+                
+                if (isVisible && !card.classList.contains('visible')) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateX(0)';
+                    card.classList.add('visible');
+                }
+            });
+        }
+
+        // Initialisation
+        window.addEventListener('load', () => {
+            createParticles();
+            handleScroll();
+        });
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Double tap pour confetti sur mobile
+        let lastTap = 0;
+        document.addEventListener('touchend', (e) => {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 500 && tapLength > 0) {
+                createConfetti();
+                e.preventDefault();
+            }
+            lastTap = currentTime;
+        });
+
+        // Empêcher le zoom sur double tap mobile
+        document.addEventListener('dblclick', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+    </script>
+</body>
+</html>
